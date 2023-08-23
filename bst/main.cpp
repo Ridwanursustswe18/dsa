@@ -4,6 +4,7 @@ using namespace std;
 
 struct node{
     int roll;
+    
     node *left,*right;
     node(){
         left = NULL;
