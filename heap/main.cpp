@@ -15,8 +15,12 @@ void push(int val){
         i /=2;
     } 
 }
+int top(){
+    return heap_[1];
+}
 int main(){
     push(10);
     push(5);
-    
+    push(15);
+    cout<<top()<<endl;
 }
