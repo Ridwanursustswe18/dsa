@@ -9,9 +9,7 @@ void push(int val){
      heap_.push_back(val);
     int i = heap_.size()-1;
     while(i>1 && heap_[i] < heap_[i/2]){
-        int temp = heap_[i];
-         heap_[i] = heap_[i/2];
-         heap_[i/2] = temp;
+       swap(heap_[i],heap_[i/2]);
         i /=2;
     } 
 }
@@ -41,16 +39,12 @@ int pop(){
     while (2*i<heap_.size())
     {
      if(2*i+1<heap_.size()&& heap_[2*i+1]<heap_[2*i] && heap_[i]>heap_[2*i+1]){
-        int temp = heap_[i];
-         heap_[i] = heap_[2*i+1];
-        heap_[2*i+1] = temp;
+       swap(heap_[i],heap_[2*i+1]);
         i  = 2*i+1;
         
      }
      else if(heap_[i]>heap_[2*i]){
-        int temp = heap_[i];
-        heap_[i] = heap_[2*i];
-        heap_[2*i] = temp;
+        swap(heap_[i],heap_[2*i]);
         i  = 2*i;
         
      }
