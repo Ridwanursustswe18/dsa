@@ -4,7 +4,7 @@ vector<int>heap_;
 void push(int val){
     if(heap_.empty()){
         heap_.push_back(0);
-       
+       return;
     }
      heap_.push_back(val);
     int i = heap_.size()-1;
@@ -56,6 +56,28 @@ int pop(){
     
     return res;
 }
+void heapify(vector<int>&nums){
+    nums.push_back(nums[0]);
+    int curr = (nums.size() - 1)/2;
+    while(curr>0){
+        int i = curr;
+        while(2*i+1<nums.size()){
+            
+        if(2*i+1<nums.size() && nums[2*i+1]<nums[2*i] && nums[i]>nums[2*i+1]){
+            swap(nums[i],nums[2*i+1]);
+            i = 2 * i+1;
+        }
+        else if(nums[i]>nums[2*i]){
+            swap(nums[i],nums[2*i]);
+            i = 2 * i;
+        }
+       else{ 
+        break;
+        }
+    }
+     curr--;
+    }
+}
 int main(){
     push(10);
     push(5);
@@ -63,12 +85,10 @@ int main(){
     push(3);
     push(20);
     push(2);
-    cout<<top()<<endl;
-    cout<<pop()<<endl;
-    cout<<top()<<endl;
-    cout<<pop()<<endl;
-    cout<<pop()<<endl;
-    cout<<pop()<<endl;
+  heapify(heap_);
+  for(int i = 1;i<heap_.size()-1;i++){
+    cout<<heap_[i]<<endl;
+  }
     
 
 }
